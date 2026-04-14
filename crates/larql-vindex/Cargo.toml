@@ -27,6 +27,8 @@ sha2 = "0.10"
 # Model weights (for safetensors loading during extract)
 safetensors = "0.5"
 memmap2 = "0.9"
+hf-hub = "0.5"
+reqwest = { version = "0.12", features = ["blocking", "json"] }
 
 # OS-level mmap hints (madvise)
 [target.'cfg(unix)'.dependencies]

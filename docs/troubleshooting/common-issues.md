@@ -308,6 +308,27 @@ larql serve vindex-with-inference --port 8080
 
 ---
 
+## Windows-Specific Issues
+
+### "library kind 'framework' is only supported on Apple targets"
+
+**Cause:** macOS Accelerate framework being used on Windows.
+
+**Fix:** Use Intel MKL instead. See [Windows Build Guide](windows-build.md) for the complete fix.
+
+### "protobuf-src linker errors (ceilf, nanf unresolved)"
+
+**Cause:** protobuf-src compilation issues on Windows.
+
+**Fix:** Build without the server component:
+```bash
+cargo build --release -p larql-cli -p larql-lql
+```
+
+The CLI and REPL work without gRPC. See [Windows Build Guide](windows-build.md).
+
+---
+
 ## Build Issues
 
 ### "Cargo build fails with missing BLAS"

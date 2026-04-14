@@ -4,6 +4,8 @@ Get LARQL running and query your first model in about 15 minutes.
 
 **Prerequisites:** [Prerequisites](prerequisites.md) — Rust 1.82+, ~6 GB disk space.
 
+> **Windows Users:** See [Quickstart: Windows](quickstart-windows.md) for a tested walkthrough with solutions to common build issues.
+
 ---
 
 ## 1. Clone and Build

@@ -26,7 +26,19 @@ libc = "0.2"
 
 # Matrix ops (BLAS-accelerated)
 ndarray = { version = "0.16", features = ["blas"] }
+tokenizers = "0.21"
+
+# Platform-specific BLAS
+[target.'cfg(target_os = "macos")'.dependencies]
 blas-src = { version = "0.10", features = ["accelerate"] }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+blas-src = { version = "0.10", default-features = false, features = ["intel-mkl"] }
+intel-mkl-src = { version = "0.8", features = ["mkl-static-lp64-seq"] }
+
+[target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
+blas-src = { version = "0.10", features = ["openblas"] }
+openblas-src = { version = "0.10", features = ["cblas", "system"] }
 
 # Tokenizer
 tokenizers = "0.21"

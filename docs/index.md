@@ -13,7 +13,7 @@ LARQL decompiles transformer models into a queryable format called a **vindex** 
 | Section | What's inside |
 |---------|--------------|
 | [Overview](overview/what-is-this.md) | Mental model, core concepts, [how it works](overview/how-it-works.md) (technical deep-dive) |
-| [Getting Started](getting-started/quickstart.md) | Installation, first vindex, first query |
+| [Getting Started](getting-started/quickstart.md) | Installation, first vindex, first query ([Windows](getting-started/quickstart-windows.md)) |
 | [Concepts](concepts/vindex.md) | Deep dives: vindex, LQL, patches, inference, crates |
 | [Guides](guides/extract-a-model.md) | Task-oriented how-tos |
 | [Reference](reference/cli.md) | CLI, API, configuration, specifications |
