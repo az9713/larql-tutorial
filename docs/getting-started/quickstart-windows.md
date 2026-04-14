@@ -122,22 +122,30 @@ Exit with `quit` or Ctrl+D.
 
 A **vindex** (vector index) is a decompiled model you can query without running inference.
 
-### Option A: Download Pre-built (Recommended)
+**Supported models:** Gemma2, Gemma3, Gemma4, LLaMA, Mistral (GPT-2 not supported)
+
+### Option A: Download Pre-built
 
 ```bash
 ./target/release/larql hf download chrishayuk/gemma-3-4b-it-vindex
 ```
 
-This downloads ~3 GB to `~/.cache/larql/vindexes/`.
+> **Note:** Pre-built vindexes may not be available yet. If you get a 404 error, use Option B.
 
-### Option B: Extract from HuggingFace Model
+### Option B: Extract from HuggingFace Model (Recommended)
+
+First download the model, then extract:
 
 ```bash
+# Download model (~8 GB for Gemma 3 4B)
+huggingface-cli download google/gemma-3-4b-it
+
+# Extract vindex (~3 GB output)
 ./target/release/larql extract-index google/gemma-3-4b-it \
     -o gemma3-4b.vindex --f16
 ```
 
-Streams ~8 GB model, produces ~3 GB vindex.
+For a smaller test, try Gemma 2B (~4 GB download).
 
 ---
 
