@@ -9,6 +9,7 @@ A tested walkthrough for building and running LARQL on Windows.
 - [Rust 1.82+](https://rustup.rs/)
 - [Git for Windows](https://gitforwindows.org/) (includes Git Bash)
 - Visual Studio Build Tools with C++ workload
+- Python + `huggingface_hub`: `pip install huggingface_hub`
 
 ---
 
@@ -21,7 +22,7 @@ cd larql-tutorial
 
 ### Build Core Components
 
-On Windows, build the CLI and REPL packages explicitly (avoids server compilation issues):
+On Windows, build the CLI and REPL packages explicitly — this skips `larql-server` which has a known protobuf linker issue on Windows:
 
 ```bash
 cargo build --release -p larql-cli -p larql-lql
@@ -34,7 +35,6 @@ cargo build --release -p larql-cli -p larql-lql
    Compiling intel-mkl-src v0.8.1
    Compiling larql-models v0.1.0
    Compiling larql-compute v0.1.0
-   Compiling larql-core v0.1.0
    Compiling larql-vindex v0.1.0
    Compiling larql-inference v0.1.0
    Compiling larql-lql v0.1.0
@@ -44,22 +44,16 @@ cargo build --release -p larql-cli -p larql-lql
 
 The binary is at `target/release/larql.exe`.
 
-### Verify Installation
+### Verify
 
 ```bash
 ./target/release/larql --version
-```
-
-**Output:**
-```
-larql 0.1.0
+# larql 0.1.0
 ```
 
 ---
 
-## 2. Test the REPL
-
-Start the interactive LQL environment:
+## 2. Start the REPL
 
 ```bash
 ./target/release/larql repl
@@ -75,124 +69,97 @@ Start the interactive LQL environment:
 larql>
 ```
 
-Type `help` to see available commands:
-
-```
-LQL Commands:
-
-  Lifecycle:
-    EXTRACT MODEL <id> INTO <path>;     Decompile model → vindex
-    COMPILE <vindex> INTO MODEL <path>;  Recompile vindex → weights
-    USE <path>;                          Set active vindex
-    USE MODEL <id>;                      Set active model (live weights)
-
-  Query (pure vindex, no model needed):
-    WALK <prompt> [TOP n];               Feature scan for a token
-    SELECT ... FROM EDGES WHERE ...;     Query edges
-    DESCRIBE <entity>;                   Knowledge about an entity
-    EXPLAIN WALK <prompt>;               Feature trace (no attention)
-    EXPLAIN INFER <prompt>;              Feature trace (with attention)
-
-  Inference (requires model weights):
-    INFER <prompt> [TOP n] [COMPARE];    Full prediction with attention
-
-  Mutation:
-    INSERT INTO EDGES (...) VALUES (...); Add edge
-    DELETE FROM EDGES WHERE ...;          Remove edges
-    UPDATE EDGES SET ... WHERE ...;       Modify edges
-
-  Introspection:
-    SHOW RELATIONS;                      List relation types
-    SHOW LAYERS;                         Layer summary
-    SHOW FEATURES <layer>;               Feature details
-    SHOW MODELS;                         List vindexes
-    STATS;                               Summary stats
-
-  Meta:
-    clear                                Clear the screen
-    help, \h, \?                         Show this help
-    exit, quit, \q                       Exit REPL
-```
-
-Exit with `quit` or Ctrl+D.
+Type `help` to see all LQL commands. Type `quit` or press Ctrl+D to exit.
 
 ---
 
 ## 3. Get a Vindex
 
-A **vindex** (vector index) is a decompiled model you can query without running inference.
+A **vindex** is a decompiled model — gate vectors, embeddings, and token metadata — stored as a queryable directory. No GPU needed to query it.
 
-**Supported models:** Gemma2, Gemma3, Gemma4, LLaMA, Mistral (GPT-2 not supported)
+**Supported model architectures:** Gemma2, Gemma3, Gemma4, LLaMA, Mistral
 
-### Option A: Download Pre-built
+### Option A: TinyLlama (fastest, ~2.4 GB download, no auth required)
 
 ```bash
-./target/release/larql hf download chrishayuk/gemma-3-4b-it-vindex
+# Step 1: Download model files
+huggingface-cli download TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+    --include "*.json" "*.safetensors" "*.txt" "*.model"
+
+# Step 2: Extract vindex (~6 min, produces ~620 MB)
+./target/release/larql extract-index TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+    -o tinyllama.vindex --f16
 ```
 
-> **Note:** Pre-built vindexes may not be available yet. If you get a 404 error, use Option B.
+**Expected extraction output:**
+```
+Extracting: ...TinyLlama-1.1B-Chat-v1.0/snapshots/... → ./tinyllama.vindex (level=browse, dtype=f16)
 
-### Option B: Extract from HuggingFace Model (Recommended)
+── loading ──
+  Streaming mode: 1 safetensors shards (mmap'd, not loaded)
+  loading: 0.0s
 
-First download the model, then extract:
+── gate_vectors ──
+  gate L 0: 0.1s
+  ...
+  gate L21: 0.1s
+  gate_vectors: 1.3s
+
+── embeddings ──
+  embeddings: 0.4s
+
+── down_meta ──
+  Whole-word vocab: 22294 tokens (of 32000)
+  down L 0: 21.9s
+  ...
+  down L21: 9.2s
+  down_meta: 384.2s
+
+── tokenizer ──
+  tokenizer: 0.0s
+
+── Summary ──
+  Output: ./tinyllama.vindex
+  Build time: 6.4min
+  gate_vectors.bin: 484.0 MB
+  embeddings.bin: 125.0 MB
+  down_meta.bin: 10.4 MB
+  tokenizer.json: 3.5 MB
+  Total: 0.61 GB
+```
+
+### Option B: Gemma 3 4B (requires HuggingFace login, ~8 GB download)
 
 ```bash
-# Download model (~8 GB for Gemma 3 4B)
-huggingface-cli download google/gemma-3-4b-it
+# Login first (one-time)
+huggingface-cli login
 
-# Extract vindex (~3 GB output)
+# Download
+huggingface-cli download google/gemma-3-4b-it \
+    --include "*.json" "*.safetensors" "*.txt" "*.model"
+
+# Extract (~3 GB vindex)
 ./target/release/larql extract-index google/gemma-3-4b-it \
     -o gemma3-4b.vindex --f16
 ```
 
-For a smaller test, try Gemma 2B (~4 GB download).
-
 ---
 
-## 4. Query the Model
+## 4. Query the Vindex
 
-Load the vindex:
+Load it in the REPL:
 
-```sql
-larql> USE "hf://chrishayuk/gemma-3-4b-it-vindex";
+```bash
+./target/release/larql repl
 ```
 
-Or for a local vindex:
-
 ```sql
-larql> USE "gemma3-4b.vindex";
-```
-
-### DESCRIBE: What does the model know?
-
-```sql
-larql> DESCRIBE "France";
+larql> USE "./tinyllama.vindex";
 ```
 
 **Output:**
 ```
-France
-  Edges (L14-27):
-    capital     → Paris              1436.9  L27  (probe)
-    language    → French               35.2  L24  (probe)
-    continent   → Europe               14.4  L25  (probe)
-    borders     → Spain                13.3  L18  (probe)
-```
-
-### WALK: Which features fire for a prompt?
-
-```sql
-larql> WALK "The capital of France is" TOP 5;
-```
-
-**Output:**
-```
-Walk: "The capital of France is" (top 5)
-  L27  F9515   Paris        1436.9
-  L24  F4532   French         26.1
-  L25  F8891   Europe         14.4
-  L26  F2201   the            12.3
-  L23  F7721   country        11.8
+Using: ./tinyllama.vindex (22 layers, 123.9K features, model: TinyLlama/TinyLlama-1.1B-Chat-v1.0)
 ```
 
 ### STATS: Vindex overview
@@ -201,16 +168,70 @@ Walk: "The capital of France is" (top 5)
 larql> STATS;
 ```
 
-**Output:**
+**Actual output (TinyLlama):**
 ```
-Model:    google/gemma-3-4b-it
-Family:   gemma3
-Layers:   34
-Features: 348,160
-Bands:    syntax [0-13], knowledge [14-27], output [28-33]
-Labels:   1,967 probe-confirmed relations
-Size:     3.2 GB
+Model:           TinyLlama/TinyLlama-1.1B-Chat-v1.0
+
+Features:        123.9K (5.6K x 22 layers)
+
+Knowledge Graph:
+  (no relation clusters found)
+
+  By layer band:
+    Syntax (L0-13):     78.8K features
+    Knowledge (L14-27): 45.1K features
+    Output (L28-33):    0 features
+
+Index size:      622.9 MB
+Path:            ./tinyllama.vindex
 ```
+
+### WALK: Which features fire for a prompt?
+
+```sql
+larql> WALK "The capital of France is" TOP 5;
+```
+
+**Actual output (TinyLlama):**
+```
+Feature scan for "The capital of France is" (token "is", 22 layers, mode=hybrid (default))
+
+  L 0: F578   gate=-0.2  top="net"            down=[net, imag, moth]
+  L 0: F1061  gate=-0.1  top="was"            down=[was, Was, were]
+  L 1: F784   gate=-0.1  top="Marx"           down=[Marx, witz, Felix]
+  ...
+  L21: F522   gate=-0.0  top="infty"          down=[infty, Hitler, typo]
+
+888.0ms
+
+Note: pure vindex scan (no attention). For inference use INFER.
+```
+
+> **Note:** WALK on TinyLlama shows raw feature activations. The clean knowledge-graph output shown in the main docs (`capital → Paris`) is from larger Gemma models with labeled probe features.
+
+### DESCRIBE: Entity knowledge lookup
+
+```sql
+larql> DESCRIBE "France";
+```
+
+**Output (TinyLlama — small model):**
+```
+France
+  (no edges found)
+```
+
+> **Note:** DESCRIBE requires labeled probe edges extracted from larger models. TinyLlama produces `(no edges found)` — this is expected. Use Gemma 3 4B for rich DESCRIBE output.
+
+---
+
+## 5. What Just Happened
+
+You queried a model's internal feature representations without running inference:
+
+1. `extract-index` streamed the safetensors file via mmap, extracted gate vectors (the routing weights of each FFN feature), embeddings, and down-projection token metadata.
+2. `WALK "The capital of France is"` tokenized the prompt, computed a residual-stream proxy, and scanned all 22 layers for matching features by KNN.
+3. No GPU. No forward pass. Just vector lookup.
 
 ---
 
@@ -223,92 +244,41 @@ Size:     3.2 GB
 error: library kind 'framework' is only supported on Apple targets
 ```
 
-**Cause:** The original code used Apple's Accelerate framework unconditionally.
-
-**Solution:** Platform-conditional BLAS dependencies in `Cargo.toml`:
-
-**Files changed:**
-- `crates/larql-compute/Cargo.toml`
-- `crates/larql-inference/Cargo.toml`
+**Fix:** Platform-conditional BLAS in `crates/larql-compute/Cargo.toml` and `crates/larql-inference/Cargo.toml`:
 
 ```toml
-# macOS: Accelerate framework
 [target.'cfg(target_os = "macos")'.dependencies]
 blas-src = { version = "0.10", features = ["accelerate"] }
 
-# Windows: Intel MKL (pre-built)
 [target.'cfg(target_os = "windows")'.dependencies]
 blas-src = { version = "0.10", default-features = false, features = ["intel-mkl"] }
 intel-mkl-src = { version = "0.8", features = ["mkl-static-lp64-seq"] }
 
-# Linux: OpenBLAS
 [target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
 blas-src = { version = "0.10", features = ["openblas"] }
 openblas-src = { version = "0.10", features = ["cblas", "system"] }
 ```
 
-### Problem 2: Unresolved crate dependencies
+### Problem 2: Missing hf-hub / reqwest / tokenizers
 
-**Error:**
-```
-error[E0433]: failed to resolve: use of undeclared crate or module `hf_hub`
-error[E0433]: failed to resolve: use of undeclared crate or module `reqwest`
-```
+**Error:** `failed to resolve: use of undeclared crate or module 'hf_hub'`
 
-**Cause:** Dependencies declared but not properly linked in `larql-vindex`.
+**Fix:** Explicit deps added to `crates/larql-vindex/Cargo.toml` and `crates/larql-inference/Cargo.toml`.
 
-**Solution:** Explicitly add dependencies:
+### Problem 3: larql-server won't compile (protobuf-src)
+
+**Error:** `error LNK2019: unresolved external symbol ceilf` (11 unresolved externals)
+
+**Fix:** Skip the server crate: `cargo build --release -p larql-cli -p larql-lql`
+
+### Problem 4: `extract-index google/gemma-3-4b-it` errors with "not a directory"
+
+**Cause:** Model not in HuggingFace cache. Must download first.
+
+**Fix:**
 ```bash
-cd crates/larql-vindex
-cargo add hf-hub@0.5
-cargo add reqwest@0.12 --features blocking,json
+huggingface-cli download google/gemma-3-4b-it --include "*.json" "*.safetensors" "*.txt" "*.model"
 ```
-
-**File changed:** `crates/larql-vindex/Cargo.toml`
-
-### Problem 3: Missing tokenizers crate
-
-**Error:**
-```
-error[E0433]: failed to resolve: use of undeclared crate or module `tokenizers`
-```
-
-**Solution:**
-```bash
-cd crates/larql-inference
-cargo add tokenizers@0.21
-```
-
-**File changed:** `crates/larql-inference/Cargo.toml`
-
-### Problem 4: larql-server won't compile (protobuf)
-
-**Error:**
-```
-error LNK2019: unresolved external symbol ceilf
-error LNK2019: unresolved external symbol nanf
-error LNK1120: 11 unresolved externals
-```
-
-**Cause:** `protobuf-src` has linker issues on Windows.
-
-**Workaround:** Don't build the server component:
-```bash
-# Instead of: cargo build --release
-cargo build --release -p larql-cli -p larql-lql
-```
-
-The CLI and REPL work fully without gRPC.
-
----
-
-## Summary of Code Changes
-
-| File | Change |
-|------|--------|
-| `crates/larql-compute/Cargo.toml` | Platform-conditional BLAS (Intel MKL for Windows) |
-| `crates/larql-inference/Cargo.toml` | Platform-conditional BLAS + tokenizers |
-| `crates/larql-vindex/Cargo.toml` | Explicit hf-hub and reqwest dependencies |
 
 ---
 
