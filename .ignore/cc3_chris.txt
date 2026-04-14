@@ -1,0 +1,1984 @@
+simon@Simon_laptop MINGW64 ~
+$ cd Downloads/llm_as_db_chris_hay/
+
+simon@Simon_laptop MINGW64 ~/Downloads/llm_as_db_chris_hay
+$ ls
+larql-main/  transcript.txt
+
+simon@Simon_laptop MINGW64 ~/Downloads/llm_as_db_chris_hay
+$ cd larql-main/
+
+simon@Simon_laptop MINGW64 ~/Downloads/llm_as_db_chris_hay/larql-main
+$ claude-yolo --chrome --name chris --continue
+╭─── Claude Code v2.1.105 ─────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                 Welcome back Simon!                │ started                 │
+│                                                    │ Run /init to create a … │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ Recent activity         │
+│                        ▘▘ ▝▝                       │ No recent activity      │
+│     Opus 4.5 · Claude Max · az9713@yahoo.com's     │                         │
+│     Organization                                   │                         │
+│     ~\Downloads\llm_as_db_chris_hay\larql-main     │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+> /technical-docs-writer deepdive this codebase and write comprehensive 360deg
+docs
+
+● I'll audit this codebase first to understand what I'm documenting, then write
+  comprehensive docs.
+
+  Phase 1: Audit
+
+  Let me explore the project structure and key files.
+
+  Searched for 1 pattern, read 1 file (ctrl+o to expand)
+
+● Let me continue exploring the codebase structure and existing documentation.
+
+  Searched for 3 patterns, read 3 files (ctrl+o to expand)
+
+● Let me load the task tools and read more of the codebase to understand the
+  full scope.
+
+  Read 3 files (ctrl+o to expand)
+
+● Let me continue the audit by reading more crate READMEs and key existing docs.
+
+  Read 6 files (ctrl+o to expand)
+
+● I've completed the audit. Now I'll create a task list and write comprehensive
+  documentation.
+
+  Audit Summary
+
+  Project: LARQL - "The model IS the database"
+  Type: Multi-component Rust platform (10 crates)
+  Core concept: Decompile transformer models into a queryable "vindex" format,
+  query with SQL-like LQL language
+
+  Existing docs: Good crate READMEs, detailed specs (lql-spec.md,
+  vindex-format-spec.md), but missing:
+  - Navigation hub (index.md)
+  - Mental model overview (what-is-this.md)
+  - Glossary (key-concepts.md)
+  - Structured quickstart and onboarding
+  - Unified architecture view
+  - Troubleshooting guide
+
+  Let me create the documentation structure.
+
+  Listed 1 directory (ctrl+o to expand)
+
+● Bash(mkdir -p
+      "C:/Users/simon/Downloads/llm_as_db_chris_hay/larql-main/docs/overview"
+      "C:/Users/simon/Downloads/llm_as_db_chris_hay/larql-main/docs/getting-star
+      ted"…)
+  ⎿  Done
+
+● Write(docs\index.md)
+  ⎿  Wrote 63 lines to docs\index.md
+      2 # LARQL Documentation
+      3 **The model IS the database.** Query neural network weights like
+        a graph database. No GPU required.
+      5 LARQL decompiles transformer models into a queryable format calle
+        d a **vindex** (vector index), then provides **LQL** (Lazarus Que
+        ry Language) to browse, edit, and recompile the model's knowledge
+      6 .
+      7 ---
+      8
+      9 ## Documentation
+     … +81 lines (ctrl+o to expand)
+
+● Write(docs\overview\what-is-this.md)
+  ⎿  Wrote 186 lines to docs\overview\what-is-this.md
+      2 # What is LARQL?
+        ge without running inference.g and editing neural network knowled
+      4
+        housands of matrix multiplications just to answer "What is the ca
+        pital of France?" LARQL extracts the model's knowledge into a que
+      6 ryable format, letting you browse facts like rows in a database.
+      8 ## The Core Insight
+      9 A transformer's FFN layers encode knowledge as gate-output pairs.
+         down vector (what it outputs). These features act like database
+        rows:
+     … +202 lines (ctrl+o to expand)
+
+● Write(docs\overview\key-concepts.md)
+  ⎿  Wrote 137 lines to docs\overview\key-concepts.md
+      2 # Key Concepts
+      3 A glossary of LARQL terminology. Terms are grouped by domain.
+      4
+      6 ---
+      7 ## Core Concepts
+      8
+         reorganized for queryability. Short for "vector index." The gate
+         vectors become a KNN index, embeddings become a token lookup, an
+        d down projections become edge metadata. A vindex enables queryin
+        g model knowledge without forward passes.
+     … +208 lines (ctrl+o to expand)
+
+● Write(docs\getting-started\prerequisites.md)
+  ⎿  Wrote 119 lines to docs\getting-started\prerequisites.md
+      1 # Prerequisites
+      2
+      3 What you need before building and running LARQL.
+      4
+      5 ---
+      6
+      7 ## Required
+      8
+      9 ### Rust 1.82+
+     … +116 lines (ctrl+o to expand)
+
+● Write(docs\getting-started\quickstart.md)
+  ⎿  Wrote 160 lines to docs\getting-started\quickstart.md
+      1 # Quickstart
+      2
+      3 Get LARQL running and query your first model in about 15 minutes.
+      4
+      5 **Prerequisites:** [Prerequisites](prerequisites.md) — Rust 1.82+
+        , ~6 GB disk space.
+      6
+      7 ---
+      8
+      9 ## 1. Clone and Build
+     … +157 lines (ctrl+o to expand)
+
+> please continue                                                               
+● Continuing with the documentation. Let me check my progress and continue        writing.
+
+● I need to finish the onboarding.md, then continue with the remaining docs.
+                                                                                ● Write(docs\getting-started\onboarding.md)
+  ⎿  Wrote 305 lines to docs\getting-started\onboarding.md                            1 # Onboarding: Zero to Hero                                                    2
+      3 A conceptual guide for newcomers. After reading this, you'll unde               rstand how LARQL works and why it's designed this way.
+      4                                                                               5 ---
+      6
+      7 ## The Mental Model
+      8
+      9 ### If You've Used Vector Databases
+     … +361 lines (ctrl+o to expand)
+
+● Write(docs\concepts\vindex.md)
+  ⎿  Wrote 333 lines to docs\concepts\vindex.md
+       2 # The Vindex Format
+       3 A vindex (vector index) is a transformer model's weights reorgan
+         ized for queryability. This document explains what's inside, how                 it's built, and how it's queried.
+       4
+       6 ---
+       7 ## What Problem It Solves
+       8                                                                               9 Standard model weights are optimized for forward passes:
+      10 - Matrices stored row-major for matmul                                      … +336 lines (ctrl+o to expand)
+                                                                                ● Write(docs\concepts\lql.md)
+  ⎿  Wrote 426 lines to docs\concepts\lql.md
+       2 # LQL: The Query Language
+       3 LQL (Lazarus Query Language) is a SQL-like language for querying
+          and editing vindexes. This document covers the language design,
+          statement types, and execution model.
+       4
+       6 ---
+       7 ## Design Goals
+       8                                                                               9 1. **Familiar syntax** — SQL-like for low learning curve
+      10 2. **Interactive** — REPL for exploration                                   … +426 lines (ctrl+o to expand)
+                                                                                ● Write(docs\concepts\patches.md)
+  ⎿  Wrote 428 lines to docs\concepts\patches.md
+      2 # Knowledge Patches
+      3 Patches are lightweight, shareable, reversible edits to model kno
+        wledge. This document explains how they work and when to use them
+        .
+      4
+      5 ---
+      6
+      7 ## What Problem They Solve                                                    8
+      9 Editing model knowledge faces a tradeoff:                                    … +438 lines (ctrl+o to expand)
+                                                                                ● Write(docs\concepts\inference.md)
+  ⎿  Wrote 366 lines to docs\concepts\inference.md
+      2 # Inference Engine
+      3 LARQL includes a full inference engine for running forward passes
+        . This document explains the architecture, modes, and optimizatio
+        ns.
+      4
+      5 ---
+      6
+      7 ## Overview                                                                   8
+      9 The inference engine supports two modes:                                     … +380 lines (ctrl+o to expand)
+                                                                                ● Write(docs\concepts\crate-architecture.md)
+  ⎿  Wrote 398 lines to docs\concepts\crate-architecture.md
+       2 # Crate Architecture
+       3 LARQL is organized into 10 Rust crates with clean dependency bou
+         ndaries. This document explains what each crate does and how the
+       4 y interact.
+       5 ---
+       6
+       8 ## Overview
+       9 ```                                                                          10 ┌───────────────────────────────────────────────────────────────
+         ──┐                                                                         … +394 lines (ctrl+o to expand)
+                                                                                ● Write(docs\guides\extract-a-model.md)
+  ⎿  Wrote 199 lines to docs\guides\extract-a-model.md
+       1 # Extract a Model to Vindex
+       2
+       3 Convert a HuggingFace or GGUF model into a queryable vindex.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8                                                                               9 - LARQL built (`cargo build --release`)
+      10 - Model weights (HuggingFace, GGUF, or pre-built vindex)                    … +196 lines (ctrl+o to expand)
+                                                                                ● Write(docs\guides\query-knowledge.md)
+  ⎿  Wrote 359 lines to docs\guides\query-knowledge.md
+       2 # Query Knowledge
+       3 Use LQL to explore what a model knows. This guide covers DESCRIB
+         E, WALK, SELECT, INFER, and TRACE.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8                                                                               9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - LARQL REPL: `larql repl`                                                  … +353 lines (ctrl+o to expand)
+                                                                                ● Write(docs\guides\edit-knowledge.md)
+  ⎿  Wrote 389 lines to docs\guides\edit-knowledge.md
+       2 # Edit Knowledge
+       3 Insert, delete, and modify facts in a model using LQL. Changes a
+         re stored as patches — base vindex files are never modified.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8                                                                               9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - For INFER verification: vindex with inference weights                     … +385 lines (ctrl+o to expand)
+                                                                                ● Write(docs\guides\serve-vindex.md)
+  ⎿  Wrote 327 lines to docs\guides\serve-vindex.md
+       1 # Serve a Vindex
+       2
+       3 Deploy a vindex over HTTP or gRPC. No GPU required.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8                                                                               9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - For inference: vindex with inference weights                              … +328 lines (ctrl+o to expand)
+                                                                                ● Write(docs\guides\python-bindings.md)
+  ⎿  Wrote 430 lines to docs\guides\python-bindings.md
+      1 # Python Bindings
+      2
+      3 Use LARQL from Python via PyO3 bindings.
+      4
+      5 ---
+      6
+      7 ## Installation
+      8                                                                               9 ### From PyPI (when available)
+     … +429 lines (ctrl+o to expand)                                            
+● Write(docs\reference\cli.md)                                                    ⎿  Wrote 331 lines to docs\reference\cli.md
+       1 # CLI Reference
+       2
+       3 Complete reference for LARQL command-line interface.
+       4
+       5 ---
+       6
+       7 ## Synopsis
+       8                                                                               9 ```bash
+      10 larql <COMMAND> [OPTIONS]                                                   … +329 lines (ctrl+o to expand)
+                                                                                ● Write(docs\reference\api.md)
+  ⎿  Wrote 522 lines to docs\reference\api.md
+       1 # Server API Reference
+       2
+       3 Complete HTTP API reference for the LARQL server.
+       4
+       5 ---
+       6
+       7 ## Base URL
+       8                                                                               9 ```
+      10 http://localhost:8080/v1                                                    … +522 lines (ctrl+o to expand)
+                                                                                ● Write(docs\reference\configuration.md)
+  ⎿  Wrote 317 lines to docs\reference\configuration.md
+      1 # Configuration Reference
+      2
+      3 Configuration options for vindexes, extraction, and runtime.
+      4
+      5 ---
+      6
+      7 ## Vindex Configuration (index.json)
+      8                                                                               9 The `index.json` file in a vindex contains configuration and meta
+        data.                                                                        … +312 lines (ctrl+o to expand)
+                                                                                ● Write(docs\architecture\system-design.md)
+  ⎿  Wrote 390 lines to docs\architecture\system-design.md
+      2 # System Design
+      3 High-level architecture of LARQL, data flows, and key design deci
+        sions.
+      4
+      5 ---
+      7 ## Overview
+      8
+      9 LARQL is a system for querying and editing neural network knowled               ge. It consists of 10 Rust crates organized in a layered architec
+        ture.                                                                        … +414 lines (ctrl+o to expand)
+                                                                                ● Write(docs\troubleshooting\common-issues.md)
+  ⎿  Wrote 432 lines to docs\troubleshooting\common-issues.md
+      1 # Common Issues
+      2
+      3 Solutions to frequently encountered problems. Issues are ordered
+        by frequency.
+      4
+      5 ---
+      6
+      7 ## Extraction Issues                                                          8
+      9 ### "Model not found in HuggingFace cache"                                   … +434 lines (ctrl+o to expand)
+                                                                                  Searched for 1 pattern, read 1 file (ctrl+o to expand)
+                                                                                ● Background command "List all documentation files created" completed (exit code 0)
+                                                                                ● Documentation complete. Here's the summary:                                                                                                                     Documentation Created                                                                                                                                           ✓ Created 21 new files in docs/                                                 ✓ Cross-links verified                                                          ✓ No stubs detected                                                                                                                                           
+  Existing Docs Preserved
+
+  The 24 existing spec files (lql-spec.md, vindex-format-spec.md, etc.) are
+  preserved and linked from the new index.md.
+
+  Key Features
+
+  - index.md: Navigation hub with tables linking all sections
+  - what-is-this.md: Core mental model (model IS the database)
+  - key-concepts.md: 50+ term glossary covering all LARQL concepts
+  - onboarding.md: Zero-to-hero guide with analogies for SQL/vector DB users
+  - crate-architecture.md: Complete 10-crate dependency diagram
+  - system-design.md: Architecture decisions, data flows, scaling
+  - common-issues.md: 25+ troubleshooting entries by frequency
+
+✻ Brewed for 19m 0s
+
+────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────
+  | Opus 4.5 | larql-main | ctx 75% | 5h 9% | 7d 42% |
+  ⏵⏵ bypass permissions on (shift+tab to cycle)
+╭─── Claude Code v2.1.105 ─────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                 Welcome back Simon!                │ started                 │
+│                                                    │ Run /init to create a … │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ Recent activity         │
+│                        ▘▘ ▝▝                       │ No recent activity      │
+│     Opus 4.5 · Claude Max · az9713@yahoo.com's     │                         │
+│     Organization                                   │                         │
+│     ~\Downloads\llm_as_db_chris_hay\larql-main     │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+> /technical-docs-writer deepdive this codebase and write comprehensive 360deg
+docs
+
+● I'll audit this codebase first to understand what I'm documenting, then write
+  comprehensive docs.
+
+  Phase 1: Audit
+
+  Let me explore the project structure and key files.
+
+  Searched for 1 pattern, read 1 file (ctrl+o to expand)
+
+● Let me continue exploring the codebase structure and existing documentation.
+
+  Searched for 3 patterns, read 3 files (ctrl+o to expand)
+
+● Let me load the task tools and read more of the codebase to understand the
+  full scope.
+
+  Read 3 files (ctrl+o to expand)
+
+● Let me continue the audit by reading more crate READMEs and key existing docs.
+
+  Read 6 files (ctrl+o to expand)
+
+● I've completed the audit. Now I'll create a task list and write comprehensive
+  documentation.
+
+  Audit Summary
+
+  Project: LARQL - "The model IS the database"
+  Type: Multi-component Rust platform (10 crates)
+  Core concept: Decompile transformer models into a queryable "vindex" format,
+  query with SQL-like LQL language
+
+  Existing docs: Good crate READMEs, detailed specs (lql-spec.md,
+  vindex-format-spec.md), but missing:
+  - Navigation hub (index.md)
+  - Mental model overview (what-is-this.md)
+  - Glossary (key-concepts.md)
+  - Structured quickstart and onboarding
+  - Unified architecture view
+  - Troubleshooting guide
+
+  Let me create the documentation structure.
+
+  Listed 1 directory (ctrl+o to expand)
+
+● Bash(mkdir -p
+      "C:/Users/simon/Downloads/llm_as_db_chris_hay/larql-main/docs/overview"
+      "C:/Users/simon/Downloads/llm_as_db_chris_hay/larql-main/docs/getting-star
+      ted"…)
+  ⎿  Done
+
+● Write(docs\index.md)
+  ⎿  Wrote 63 lines to docs\index.md
+      2 # LARQL Documentation
+      3 **The model IS the database.** Query neural network weights like
+        a graph database. No GPU required.
+      5 LARQL decompiles transformer models into a queryable format calle
+        d a **vindex** (vector index), then provides **LQL** (Lazarus Que
+        ry Language) to browse, edit, and recompile the model's knowledge
+      6 .
+      7 ---
+      8
+      9 ## Documentation
+     … +53 lines (ctrl+o to expand)
+
+● Write(docs\overview\what-is-this.md)
+  ⎿  Wrote 186 lines to docs\overview\what-is-this.md
+      2 # What is LARQL?
+        ge without running inference.g and editing neural network knowled
+      4
+        housands of matrix multiplications just to answer "What is the ca
+        pital of France?" LARQL extracts the model's knowledge into a que
+      6 ryable format, letting you browse facts like rows in a database.
+      8 ## The Core Insight
+      9 A transformer's FFN layers encode knowledge as gate-output pairs.
+         down vector (what it outputs). These features act like database
+        rows:
+     … +178 lines (ctrl+o to expand)
+
+● Write(docs\overview\key-concepts.md)
+  ⎿  Wrote 137 lines to docs\overview\key-concepts.md
+      2 # Key Concepts
+      3 A glossary of LARQL terminology. Terms are grouped by domain.
+      4
+      6 ---
+      7 ## Core Concepts
+      8
+         reorganized for queryability. Short for "vector index." The gate
+         vectors become a KNN index, embeddings become a token lookup, an
+        d down projections become edge metadata. A vindex enables queryin
+        g model knowledge without forward passes.
+     … +136 lines (ctrl+o to expand)
+
+● Write(docs\getting-started\prerequisites.md)
+  ⎿  Wrote 119 lines to docs\getting-started\prerequisites.md
+      1 # Prerequisites
+      2
+      3 What you need before building and running LARQL.
+      4
+      5 ---
+      6
+      7 ## Required
+      8
+      9 ### Rust 1.82+
+     … +109 lines (ctrl+o to expand)
+
+● Write(docs\getting-started\quickstart.md)
+  ⎿  Wrote 160 lines to docs\getting-started\quickstart.md
+      1 # Quickstart
+      2
+      3 Get LARQL running and query your first model in about 15 minutes.
+      4
+      5 **Prerequisites:** [Prerequisites](prerequisites.md) — Rust 1.82+
+        , ~6 GB disk space.
+      6
+      7 ---
+      8
+      9 ## 1. Clone and Build
+     … +150 lines (ctrl+o to expand)
+
+> please continue
+
+● Continuing with the documentation. Let me check my progress and continue writi
+
+● I need to finish the onboarding.md, then continue with the remaining docs.
+
+● Write(docs\getting-started\onboarding.md)
+  ⎿  Wrote 305 lines to docs\getting-started\onboarding.md
+      1 # Onboarding: Zero to Hero
+      2
+      3 A conceptual guide for newcomers. After reading this, you'll unde
+        rstand how LARQL works and why it's designed this way.
+      4
+      5 ---
+      6
+      7 ## The Mental Model
+      8
+      9 ### If You've Used Vector Databases
+     … +303 lines (ctrl+o to expand)
+
+● Write(docs\concepts\vindex.md)
+  ⎿  Wrote 333 lines to docs\concepts\vindex.md
+       2 # The Vindex Format
+       3 A vindex (vector index) is a transformer model's weights reorgan
+         ized for queryability. This document explains what's inside, how
+          it's built, and how it's queried.
+       4
+       6 ---
+       7 ## What Problem It Solves
+       8
+       9 Standard model weights are optimized for forward passes:
+      10 - Matrices stored row-major for matmul
+     … +323 lines (ctrl+o to expand)
+
+● Write(docs\concepts\lql.md)
+  ⎿  Wrote 426 lines to docs\concepts\lql.md
+       2 # LQL: The Query Language
+       3 LQL (Lazarus Query Language) is a SQL-like language for querying
+          and editing vindexes. This document covers the language design,
+          statement types, and execution model.
+       4
+       6 ---
+       7 ## Design Goals
+       8
+       9 1. **Familiar syntax** — SQL-like for low learning curve
+      10 2. **Interactive** — REPL for exploration
+     … +416 lines (ctrl+o to expand)
+
+● Write(docs\concepts\patches.md)
+  ⎿  Wrote 428 lines to docs\concepts\patches.md
+      2 # Knowledge Patches
+      3 Patches are lightweight, shareable, reversible edits to model kno
+        wledge. This document explains how they work and when to use them
+        .
+      4
+      5 ---
+      6
+      7 ## What Problem They Solve
+      8
+      9 Editing model knowledge faces a tradeoff:
+     … +418 lines (ctrl+o to expand)
+
+● Write(docs\concepts\inference.md)
+  ⎿  Wrote 366 lines to docs\concepts\inference.md
+      2 # Inference Engine
+      3 LARQL includes a full inference engine for running forward passes
+        . This document explains the architecture, modes, and optimizatio
+        ns.
+      4
+      5 ---
+      6
+      7 ## Overview
+      8
+      9 The inference engine supports two modes:
+     … +356 lines (ctrl+o to expand)
+
+● Write(docs\concepts\crate-architecture.md)
+  ⎿  Wrote 398 lines to docs\concepts\crate-architecture.md
+       2 # Crate Architecture
+       3 LARQL is organized into 10 Rust crates with clean dependency bou
+         ndaries. This document explains what each crate does and how the
+       4 y interact.
+       5 ---
+       6
+       8 ## Overview
+       9 ```
+      10 ┌───────────────────────────────────────────────────────────────
+         ──┐
+     … +388 lines (ctrl+o to expand)
+
+● Write(docs\guides\extract-a-model.md)
+  ⎿  Wrote 199 lines to docs\guides\extract-a-model.md
+       1 # Extract a Model to Vindex
+       2
+       3 Convert a HuggingFace or GGUF model into a queryable vindex.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - LARQL built (`cargo build --release`)
+      10 - Model weights (HuggingFace, GGUF, or pre-built vindex)
+     … +189 lines (ctrl+o to expand)
+
+● Write(docs\guides\query-knowledge.md)
+  ⎿  Wrote 359 lines to docs\guides\query-knowledge.md
+       2 # Query Knowledge
+       3 Use LQL to explore what a model knows. This guide covers DESCRIB
+         E, WALK, SELECT, INFER, and TRACE.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - LARQL REPL: `larql repl`
+     … +349 lines (ctrl+o to expand)
+
+● Write(docs\guides\edit-knowledge.md)
+  ⎿  Wrote 389 lines to docs\guides\edit-knowledge.md
+       2 # Edit Knowledge
+       3 Insert, delete, and modify facts in a model using LQL. Changes a
+         re stored as patches — base vindex files are never modified.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - For INFER verification: vindex with inference weights
+     … +379 lines (ctrl+o to expand)
+
+● Write(docs\guides\serve-vindex.md)
+  ⎿  Wrote 327 lines to docs\guides\serve-vindex.md
+       1 # Serve a Vindex
+       2
+       3 Deploy a vindex over HTTP or gRPC. No GPU required.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - For inference: vindex with inference weights
+     … +317 lines (ctrl+o to expand)
+
+● Write(docs\guides\python-bindings.md)
+  ⎿  Wrote 430 lines to docs\guides\python-bindings.md
+      1 # Python Bindings
+      2
+      3 Use LARQL from Python via PyO3 bindings.
+      4
+      5 ---
+      6
+      7 ## Installation
+      8
+      9 ### From PyPI (when available)
+     … +420 lines (ctrl+o to expand)
+
+● Write(docs\reference\cli.md)
+  ⎿  Wrote 331 lines to docs\reference\cli.md
+       1 # CLI Reference
+       2
+       3 Complete reference for LARQL command-line interface.
+       4
+       5 ---
+       6
+       7 ## Synopsis
+       8
+       9 ```bash
+      10 larql <COMMAND> [OPTIONS]
+     … +321 lines (ctrl+o to expand)
+
+● Write(docs\reference\api.md)
+  ⎿  Wrote 522 lines to docs\reference\api.md
+       1 # Server API Reference
+       2
+       3 Complete HTTP API reference for the LARQL server.
+       4
+       5 ---
+       6
+       7 ## Base URL
+       8
+       9 ```
+      10 http://localhost:8080/v1
+     … +512 lines (ctrl+o to expand)
+
+● Write(docs\reference\configuration.md)
+  ⎿  Wrote 317 lines to docs\reference\configuration.md
+      1 # Configuration Reference
+      2
+      3 Configuration options for vindexes, extraction, and runtime.
+      4
+      5 ---
+      6
+      7 ## Vindex Configuration (index.json)
+      8
+      9 The `index.json` file in a vindex contains configuration and meta
+        data.
+     … +307 lines (ctrl+o to expand)
+
+● Write(docs\architecture\system-design.md)
+  ⎿  Wrote 390 lines to docs\architecture\system-design.md
+      2 # System Design
+      3 High-level architecture of LARQL, data flows, and key design deci
+        sions.
+      4
+      5 ---
+      7 ## Overview
+      8
+      9 LARQL is a system for querying and editing neural network knowled
+        ge. It consists of 10 Rust crates organized in a layered architec
+        ture.
+     … +380 lines (ctrl+o to expand)
+
+● Write(docs\troubleshooting\common-issues.md)
+  ⎿  Wrote 432 lines to docs\troubleshooting\common-issues.md
+      1 # Common Issues
+      2
+      3 Solutions to frequently encountered problems. Issues are ordered
+        by frequency.
+      4
+      5 ---
+      6
+      7 ## Extraction Issues
+      8
+      9 ### "Model not found in HuggingFace cache"
+     … +422 lines (ctrl+o to expand)
+
+  Searched for 1 pattern, read 1 file (ctrl+o to expand)
+
+● Background command "List all documentation files created" completed (exit code
+
+● Documentation complete. Here's the summary:
+
+  Documentation Created
+
+  ✓ Created 21 new files in docs/
+  ✓ Cross-links verified
+  ✓ No stubs detected
+
+  Entry point: docs/index.md
+  Onboarding: docs/getting-started/onboarding.md
+
+  New Documentation Structure
+
+  docs/
+  ├── index.md                           ← Navigation hub
+  ├── overview/
+  │   ├── what-is-this.md               ← Mental model, core concept
+  │   └── key-concepts.md               ← Glossary (50+ terms)
+  ├── getting-started/
+  │   ├── prerequisites.md              ← Requirements
+  │   ├── quickstart.md                 ← 15-minute guide
+  │   └── onboarding.md                 ← Zero-to-hero conceptual
+  ├── concepts/
+  │   ├── vindex.md                     ← Deep dive: vindex format
+  │   ├── lql.md                        ← Deep dive: query language
+  │   ├── patches.md                    ← Deep dive: knowledge editing
+  │   ├── inference.md                  ← Deep dive: inference engine
+  │   └── crate-architecture.md         ← How 10 crates fit together
+  ├── guides/
+  │   ├── extract-a-model.md            ← Task: HuggingFace → vindex
+  │   ├── query-knowledge.md            ← Task: DESCRIBE, WALK, SELECT
+  │   ├── edit-knowledge.md             ← Task: INSERT, patches
+  │   ├── serve-vindex.md               ← Task: HTTP/gRPC server
+  │   └── python-bindings.md            ← Task: use from Python
+  ├── reference/
+  │   ├── cli.md                        ← CLI reference
+  │   ├── api.md                        ← Server API reference
+  │   └── configuration.md              ← Vindex config, levels
+  ├── architecture/
+  │   └── system-design.md              ← System architecture, ADRs
+  └── troubleshooting/
+      └── common-issues.md              ← Top issues and fixes
+
+  Existing Docs Preserved
+
+  The 24 existing spec files (lql-spec.md, vindex-format-spec.md, etc.) are pres
+
+  Key Features
+
+  - index.md: Navigation hub with tables linking all sections
+  - what-is-this.md: Core mental model (model IS the database)
+  - key-concepts.md: 50+ term glossary covering all LARQL concepts
+  - onboarding.md: Zero-to-hero guide with analogies for SQL/vector DB users
+  - crate-architecture.md: Complete 10-crate dependency diagram
+  - system-design.md: Architecture decisions, data flows, scaling
+  - common-issues.md: 25+ troubleshooting entries by frequency
+
+✻ Brewed for 19m 0s
+
+> can this repo run on PC                                                       
+✽ Flummoxing… (thinking)                                                          ⎿  Tip: Ask Claude to create a todo list when working on complex tasks to trac
+
+────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────
+  | Opus 4.5 | larql-main | ctx 75% | 5h 9% | 7d 42% |
+  ⏵⏵ bypass permissions on (shift+tab to cycle)
+╭─── Claude Code v2.1.105 ─────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                 Welcome back Simon!                │ started                 │
+│                                                    │ Run /init to create a … │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ Recent activity         │
+│                        ▘▘ ▝▝                       │ No recent activity      │
+│     Opus 4.5 · Claude Max · az9713@yahoo.com's     │                         │
+│     Organization                                   │                         │
+│     ~\Downloads\llm_as_db_chris_hay\larql-main     │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+● Let me continue the audit by reading more crate READMEs and key existing docs.
+
+  Read 6 files (ctrl+o to expand)
+
+● I've completed the audit. Now I'll create a task list and write comprehensive
+
+  Audit Summary
+
+  Project: LARQL - "The model IS the database"
+  Type: Multi-component Rust platform (10 crates)
+  Core concept: Decompile transformer models into a queryable "vindex" format, q
+
+  Existing docs: Good crate READMEs, detailed specs (lql-spec.md, vindex-format-
+  - Navigation hub (index.md)
+  - Mental model overview (what-is-this.md)
+  - Glossary (key-concepts.md)
+  - Structured quickstart and onboarding
+  - Unified architecture view
+  - Troubleshooting guide
+
+  Let me create the documentation structure.
+
+  Listed 1 directory (ctrl+o to expand)
+
+● Bash(mkdir -p "C:/Users/simon/Downloads/llm_as_db_chris_hay/larql-main/docs/ov
+  ⎿  Done
+
+● Write(docs\index.md)
+  ⎿  Wrote 63 lines to docs\index.md
+      1 # LARQL Documentation
+      2
+      3 **The model IS the database.** Query neural network weights like a graph
+      4
+      5 LARQL decompiles transformer models into a queryable format called a **v
+        .
+      6
+      7 ---
+      8
+      9 ## Documentation
+     … +53 lines (ctrl+o to expand)
+
+● Write(docs\overview\what-is-this.md)
+  ⎿  Wrote 186 lines to docs\overview\what-is-this.md
+      2 # What is LARQL?
+      3 LARQL is a system for querying and editing neural network knowledge with
+      4
+      5 Traditional LLM interaction requires a GPU, a forward pass, and thousand
+        ryable format, letting you browse facts like rows in a database.
+      6
+      7 ## The Core Insight
+      8
+      9 A transformer's FFN layers encode knowledge as gate-output pairs. Each "
+        rows:
+     … +178 lines (ctrl+o to expand)
+
+● Write(docs\overview\key-concepts.md)
+  ⎿  Wrote 137 lines to docs\overview\key-concepts.md
+      1 # Key Concepts
+      2
+      3 A glossary of LARQL terminology. Terms are grouped by domain.
+      4
+      5 ---
+      6
+      7 ## Core Concepts
+      8
+      9 **Vindex** — A directory containing a transformer model's weights reorga
+        d down projections become edge metadata. A vindex enables querying model
+     … +136 lines (ctrl+o to expand)
+
+● Write(docs\getting-started\prerequisites.md)
+  ⎿  Wrote 119 lines to docs\getting-started\prerequisites.md
+      1 # Prerequisites
+      2
+      3 What you need before building and running LARQL.
+      4
+      5 ---
+      6
+      7 ## Required
+      8
+      9 ### Rust 1.82+
+     … +109 lines (ctrl+o to expand)
+
+● Write(docs\getting-started\quickstart.md)
+  ⎿  Wrote 160 lines to docs\getting-started\quickstart.md
+      1 # Quickstart
+      2
+      3 Get LARQL running and query your first model in about 15 minutes.
+      4
+      5 **Prerequisites:** [Prerequisites](prerequisites.md) — Rust 1.82+, ~6 GB
+      6
+      7 ---
+      8
+      9 ## 1. Clone and Build
+     … +150 lines (ctrl+o to expand)
+
+> please continue
+
+● Continuing with the documentation. Let me check my progress and continue writi
+
+● I need to finish the onboarding.md, then continue with the remaining docs.
+
+● Write(docs\getting-started\onboarding.md)
+  ⎿  Wrote 305 lines to docs\getting-started\onboarding.md
+      1 # Onboarding: Zero to Hero
+      2
+      3 A conceptual guide for newcomers. After reading this, you'll understand
+      4
+      5 ---
+      6
+      7 ## The Mental Model
+      8
+      9 ### If You've Used Vector Databases
+     … +303 lines (ctrl+o to expand)
+
+● Write(docs\concepts\vindex.md)
+  ⎿  Wrote 333 lines to docs\concepts\vindex.md
+       1 # The Vindex Format
+       2
+       3 A vindex (vector index) is a transformer model's weights reorganized fo
+       4
+       5 ---
+       6
+       7 ## What Problem It Solves
+       8
+       9 Standard model weights are optimized for forward passes:
+      10 - Matrices stored row-major for matmul
+     … +323 lines (ctrl+o to expand)
+
+● Write(docs\concepts\lql.md)
+  ⎿  Wrote 426 lines to docs\concepts\lql.md
+       1 # LQL: The Query Language
+       2
+       3 LQL (Lazarus Query Language) is a SQL-like language for querying and ed
+       4
+       5 ---
+       6
+       7 ## Design Goals
+       8
+       9 1. **Familiar syntax** — SQL-like for low learning curve
+      10 2. **Interactive** — REPL for exploration
+     … +416 lines (ctrl+o to expand)
+
+● Write(docs\concepts\patches.md)
+  ⎿  Wrote 428 lines to docs\concepts\patches.md
+      1 # Knowledge Patches
+      2
+      3 Patches are lightweight, shareable, reversible edits to model knowledge.
+      4
+      5 ---
+      6
+      7 ## What Problem They Solve
+      8
+      9 Editing model knowledge faces a tradeoff:
+     … +418 lines (ctrl+o to expand)
+
+● Write(docs\concepts\inference.md)
+  ⎿  Wrote 366 lines to docs\concepts\inference.md
+      1 # Inference Engine
+      2
+      3 LARQL includes a full inference engine for running forward passes. This
+      4
+      5 ---
+      6
+      7 ## Overview
+      8
+      9 The inference engine supports two modes:
+     … +356 lines (ctrl+o to expand)
+
+● Write(docs\concepts\crate-architecture.md)
+  ⎿  Wrote 398 lines to docs\concepts\crate-architecture.md
+       1 # Crate Architecture
+       2
+       3 LARQL is organized into 10 Rust crates with clean dependency boundaries
+       4
+       5 ---
+       6
+       7 ## Overview
+       8
+       9 ```
+      10 ┌─────────────────────────────────────────────────────────────────┐
+     … +388 lines (ctrl+o to expand)
+
+● Write(docs\guides\extract-a-model.md)
+  ⎿  Wrote 199 lines to docs\guides\extract-a-model.md
+       1 # Extract a Model to Vindex
+       2
+       3 Convert a HuggingFace or GGUF model into a queryable vindex.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - LARQL built (`cargo build --release`)
+      10 - Model weights (HuggingFace, GGUF, or pre-built vindex)
+     … +189 lines (ctrl+o to expand)
+
+● Write(docs\guides\query-knowledge.md)
+  ⎿  Wrote 359 lines to docs\guides\query-knowledge.md
+       1 # Query Knowledge
+       2
+       3 Use LQL to explore what a model knows. This guide covers DESCRIBE, WALK
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - LARQL REPL: `larql repl`
+     … +349 lines (ctrl+o to expand)
+
+● Write(docs\guides\edit-knowledge.md)
+  ⎿  Wrote 389 lines to docs\guides\edit-knowledge.md
+       1 # Edit Knowledge
+       2
+       3 Insert, delete, and modify facts in a model using LQL. Changes are stor
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - For INFER verification: vindex with inference weights
+     … +379 lines (ctrl+o to expand)
+
+● Write(docs\guides\serve-vindex.md)
+  ⎿  Wrote 327 lines to docs\guides\serve-vindex.md
+       1 # Serve a Vindex
+       2
+       3 Deploy a vindex over HTTP or gRPC. No GPU required.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - For inference: vindex with inference weights
+     … +317 lines (ctrl+o to expand)
+
+● Write(docs\guides\python-bindings.md)
+  ⎿  Wrote 430 lines to docs\guides\python-bindings.md
+      1 # Python Bindings
+      2
+      3 Use LARQL from Python via PyO3 bindings.
+      4
+      5 ---
+      6
+      7 ## Installation
+      8
+      9 ### From PyPI (when available)
+     … +420 lines (ctrl+o to expand)
+
+● Write(docs\reference\cli.md)
+  ⎿  Wrote 331 lines to docs\reference\cli.md
+       1 # CLI Reference
+       2
+       3 Complete reference for LARQL command-line interface.
+       4
+       5 ---
+       6
+       7 ## Synopsis
+       8
+       9 ```bash
+      10 larql <COMMAND> [OPTIONS]
+     … +321 lines (ctrl+o to expand)
+
+● Write(docs\reference\api.md)
+  ⎿  Wrote 522 lines to docs\reference\api.md
+       1 # Server API Reference
+       2
+       3 Complete HTTP API reference for the LARQL server.
+       4
+       5 ---
+       6
+       7 ## Base URL
+       8
+       9 ```
+      10 http://localhost:8080/v1
+     … +512 lines (ctrl+o to expand)
+
+● Write(docs\reference\configuration.md)
+  ⎿  Wrote 317 lines to docs\reference\configuration.md
+      1 # Configuration Reference
+      2
+      3 Configuration options for vindexes, extraction, and runtime.
+      4
+      5 ---
+      6
+      7 ## Vindex Configuration (index.json)
+      8
+      9 The `index.json` file in a vindex contains configuration and metadata.
+     … +307 lines (ctrl+o to expand)
+
+● Write(docs\architecture\system-design.md)
+  ⎿  Wrote 390 lines to docs\architecture\system-design.md
+      1 # System Design
+      2
+      3 High-level architecture of LARQL, data flows, and key design decisions.
+      4
+      5 ---
+      6
+      7 ## Overview
+      8
+      9 LARQL is a system for querying and editing neural network knowledge. It
+     … +380 lines (ctrl+o to expand)
+
+● Write(docs\troubleshooting\common-issues.md)
+  ⎿  Wrote 432 lines to docs\troubleshooting\common-issues.md
+      1 # Common Issues
+      2
+      3 Solutions to frequently encountered problems. Issues are ordered by freq
+      4
+      5 ---
+      6
+      7 ## Extraction Issues
+      8
+      9 ### "Model not found in HuggingFace cache"
+     … +422 lines (ctrl+o to expand)
+
+  Searched for 1 pattern, read 1 file (ctrl+o to expand)
+
+● Background command "List all documentation files created" completed (exit code
+
+● Documentation complete. Here's the summary:
+
+  Documentation Created
+
+  ✓ Created 21 new files in docs/
+  ✓ Cross-links verified
+  ✓ No stubs detected
+
+  Entry point: docs/index.md
+  Onboarding: docs/getting-started/onboarding.md
+
+  New Documentation Structure
+
+  docs/
+  ├── index.md                           ← Navigation hub
+  ├── overview/
+  │   ├── what-is-this.md               ← Mental model, core concept
+  │   └── key-concepts.md               ← Glossary (50+ terms)
+  ├── getting-started/
+  │   ├── prerequisites.md              ← Requirements
+  │   ├── quickstart.md                 ← 15-minute guide
+  │   └── onboarding.md                 ← Zero-to-hero conceptual
+  ├── concepts/
+  │   ├── vindex.md                     ← Deep dive: vindex format
+  │   ├── lql.md                        ← Deep dive: query language
+  │   ├── patches.md                    ← Deep dive: knowledge editing
+  │   ├── inference.md                  ← Deep dive: inference engine
+  │   └── crate-architecture.md         ← How 10 crates fit together
+  ├── guides/
+  │   ├── extract-a-model.md            ← Task: HuggingFace → vindex
+  │   ├── query-knowledge.md            ← Task: DESCRIBE, WALK, SELECT
+  │   ├── edit-knowledge.md             ← Task: INSERT, patches
+  │   ├── serve-vindex.md               ← Task: HTTP/gRPC server
+  │   └── python-bindings.md            ← Task: use from Python
+  ├── reference/
+  │   ├── cli.md                        ← CLI reference
+  │   ├── api.md                        ← Server API reference
+  │   └── configuration.md              ← Vindex config, levels
+  ├── architecture/
+  │   └── system-design.md              ← System architecture, ADRs
+  └── troubleshooting/
+      └── common-issues.md              ← Top issues and fixes
+
+  Existing Docs Preserved
+
+  The 24 existing spec files (lql-spec.md, vindex-format-spec.md, etc.) are pres
+
+  Key Features
+
+  - index.md: Navigation hub with tables linking all sections
+  - what-is-this.md: Core mental model (model IS the database)
+  - key-concepts.md: 50+ term glossary covering all LARQL concepts
+  - onboarding.md: Zero-to-hero guide with analogies for SQL/vector DB users
+  - crate-architecture.md: Complete 10-crate dependency diagram
+  - system-design.md: Architecture decisions, data flows, scaling
+  - common-issues.md: 25+ troubleshooting entries by frequency
+
+✻ Brewed for 19m 0s
+
+> can this repo run on PC
+
+● Based on my audit of the codebase, yes, LARQL can run on Windows PC, but with
+
+  Windows Support Status
+                                                                                  ┌─────────────────────────────────────────┬─────────────────┐
+  │                 Feature                 │     Status      │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Build                                   │ Yes             │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Browse queries (DESCRIBE, WALK, SELECT) │ Yes             │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Inference (CPU)                         │ Yes             │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Metal GPU                               │ No (macOS only) │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Testing coverage                        │ Limited         │
+  └─────────────────────────────────────────┴─────────────────┘
+
+  To Run on Windows
+
+  # Clone and build
+  git clone https://github.com/chrishayuk/larql.git
+  cd larql
+  cargo build --release
+
+  # The binary will be at:
+  # target\release\larql.exe
+
+  What Works
+
+  - All browse operations: DESCRIBE, WALK, SELECT, STATS
+  - CPU inference: INFER works but without Metal GPU acceleration
+  - Vindex extraction: From HuggingFace or GGUF
+  - LQL REPL: Full query language support
+  - HTTP server: larql serve
+
+  What's Different
+
+  1. No Metal GPU — Windows uses CPU-only BLAS. Inference will be slower than on
+  2. BLAS backend — You may need OpenBLAS installed:
+  # Using vcpkg
+  vcpkg install openblas
+  3. Limited testing — The project is primarily developed/tested on macOS. Some
+
+  Quick Test
+
+  # Query
+  USE "hf://chrishayuk/gemma-3-4b-it-vindex";
+  DESCRIBE "France";
+
+  If you encounter issues, the CPU backend should work for all core functionality — just without GPU acceleration for inference.
+
+✻ Crunched for 52s
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────>                                                                                                                                                                                                                 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  | Opus 4.5 | larql-main | ctx 75% | 5h 9% | 7d 42% |                                                                                                                                                              ⏵⏵ bypass permissions on (shift+tab to cycle)
+
+╭─── Claude Code v2.1.105 ─────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                 Welcome back Simon!                │ started                 │
+│                                                    │ Run /init to create a … │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ Recent activity         │
+│                        ▘▘ ▝▝                       │ No recent activity      │
+│     Opus 4.5 · Claude Max · az9713@yahoo.com's     │                         │
+│     Organization                                   │                         │
+│     ~\Downloads\llm_as_db_chris_hay\larql-main     │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+● Let me continue the audit by reading more crate READMEs and key existing docs.
+
+  Read 6 files (ctrl+o to expand)
+
+● I've completed the audit. Now I'll create a task list and write comprehensive
+  documentation.
+
+  Audit Summary
+
+  Project: LARQL - "The model IS the database"
+  Type: Multi-component Rust platform (10 crates)
+  Core concept: Decompile transformer models into a queryable "vindex" format,
+  query with SQL-like LQL language
+
+  Existing docs: Good crate READMEs, detailed specs (lql-spec.md,
+  vindex-format-spec.md), but missing:
+  - Navigation hub (index.md)
+  - Mental model overview (what-is-this.md)
+  - Glossary (key-concepts.md)
+  - Structured quickstart and onboarding
+  - Unified architecture view
+  - Troubleshooting guide
+
+  Let me create the documentation structure.
+
+  Listed 1 directory (ctrl+o to expand)
+
+● Bash(mkdir -p
+      "C:/Users/simon/Downloads/llm_as_db_chris_hay/larql-main/docs/overview"
+      "C:/Users/simon/Downloads/llm_as_db_chris_hay/larql-main/docs/getting-star
+      ted"…)
+  ⎿  Done
+
+● Write(docs\index.md)
+  ⎿  Wrote 63 lines to docs\index.md
+      2 # LARQL Documentation
+      3 **The model IS the database.** Query neural network weights like a
+     graph database. No GPU required.
+      5 LARQL decompiles transformer models into a queryable format called
+     a **vindex** (vector index), then provides **LQL** (Lazarus Query
+     Language) to browse, edit, and recompile the model's knowledge
+      6 .
+      7 ---
+      8
+      9 ## Documentation
+     … +81 lines (ctrl+o to expand)
+
+● Write(docs\overview\what-is-this.md)
+  ⎿  Wrote 186 lines to docs\overview\what-is-this.md
+      2 # What is LARQL?
+      3 LARQL is a system for querying and editing neural network knowledge
+      4 thout running inference.
+      5 Traditional LLM interaction requires a GPU, a forward pass, and
+     thousands of matrix multiplications just to answer "What is the
+      6 ryable format, letting you browse facts like rows in a database.
+      8 ## The Core Insight
+      9 A transformer's FFN layers encode knowledge as gate-output pairs.
+     Each "feature" is a gate vector (what triggers it) paired with a down
+        rows:what it outputs). These features act like database
+     … +202 lines (ctrl+o to expand)
+
+● Write(docs\overview\key-concepts.md)
+  ⎿  Wrote 137 lines to docs\overview\key-concepts.md
+      2 # Key Concepts
+      3 A glossary of LARQL terminology. Terms are grouped by domain.
+      4
+      6 ---
+      7 ## Core Concepts
+      8
+      9 **Vindex** — A directory containing a transformer model's weights
+     reorganized for queryability. Short for "vector index." The gate
+        d down projections become edge metadata. A vindex enables querying
+     model knowledge without forward passes.
+     … +208 lines (ctrl+o to expand)
+
+● Write(docs\getting-started\prerequisites.md)
+  ⎿  Wrote 119 lines to docs\getting-started\prerequisites.md
+      1 # Prerequisites
+      2
+      3 What you need before building and running LARQL.
+      4
+      5 ---
+      6
+      7 ## Required
+      8
+      9 ### Rust 1.82+
+     … +116 lines (ctrl+o to expand)
+
+● Write(docs\getting-started\quickstart.md)
+  ⎿  Wrote 160 lines to docs\getting-started\quickstart.md
+      1 # Quickstart
+      2
+      3 Get LARQL running and query your first model in about 15 minutes.
+      4
+      5 **Prerequisites:** [Prerequisites](prerequisites.md) — Rust 1.82+,
+     ~6 GB disk space.
+      6
+      7 ---
+      8
+      9 ## 1. Clone and Build
+     … +157 lines (ctrl+o to expand)
+
+> please continue
+
+● Continuing with the documentation. Let me check my progress and continue
+  writing.
+
+● I need to finish the onboarding.md, then continue with the remaining docs.
+
+● Write(docs\getting-started\onboarding.md)
+  ⎿  Wrote 305 lines to docs\getting-started\onboarding.md
+      1 # Onboarding: Zero to Hero
+      2
+      3 A conceptual guide for newcomers. After reading this, you'll
+     understand how LARQL works and why it's designed this way.
+      4
+      5 ---
+      6
+      7 ## The Mental Model
+      8
+      9 ### If You've Used Vector Databases
+     … +361 lines (ctrl+o to expand)
+
+● Write(docs\concepts\vindex.md)
+  ⎿  Wrote 333 lines to docs\concepts\vindex.md
+       2 # The Vindex Format
+       3 A vindex (vector index) is a transformer model's weights
+     reorganized for queryability. This document explains what's inside,
+     how it's built, and how it's queried.
+       4
+       6 ---
+       7 ## What Problem It Solves
+       8
+       9 Standard model weights are optimized for forward passes:
+      10 - Matrices stored row-major for matmul
+     … +336 lines (ctrl+o to expand)
+
+● Write(docs\concepts\lql.md)
+  ⎿  Wrote 426 lines to docs\concepts\lql.md
+       2 # LQL: The Query Language
+       3 LQL (Lazarus Query Language) is a SQL-like language for querying
+     and editing vindexes. This document covers the language design,
+     statement types, and execution model.
+       4
+       6 ---
+       7 ## Design Goals
+       8
+       9 1. **Familiar syntax** — SQL-like for low learning curve
+      10 2. **Interactive** — REPL for exploration
+     … +426 lines (ctrl+o to expand)
+
+● Write(docs\concepts\patches.md)
+  ⎿  Wrote 428 lines to docs\concepts\patches.md
+      1 # Knowledge Patches
+      2
+      3 Patches are lightweight, shareable, reversible edits to model
+     knowledge. This document explains how they work and when to use them.
+      4
+      5 ---
+      6
+      7 ## What Problem They Solve
+      8
+      9 Editing model knowledge faces a tradeoff:
+     … +438 lines (ctrl+o to expand)
+
+● Write(docs\concepts\inference.md)
+  ⎿  Wrote 366 lines to docs\concepts\inference.md
+      1 # Inference Engine
+      2
+      3 LARQL includes a full inference engine for running forward passes.
+     This document explains the architecture, modes, and optimizations.
+      4
+      5 ---
+      6
+      7 ## Overview
+      8
+      9 The inference engine supports two modes:
+     … +380 lines (ctrl+o to expand)
+
+● Write(docs\concepts\crate-architecture.md)
+  ⎿  Wrote 398 lines to docs\concepts\crate-architecture.md
+       2 # Crate Architecture
+       3 LARQL is organized into 10 Rust crates with clean dependency
+     boundaries. This document explains what each crate does and how they
+       4 ract.
+       5 ---
+       6
+       8 ## Overview
+       9 ```
+      10
+     ┌─────────────────────────────────────────────────────────────────┐
+     … +394 lines (ctrl+o to expand)
+
+● Write(docs\guides\extract-a-model.md)
+  ⎿  Wrote 199 lines to docs\guides\extract-a-model.md
+       1 # Extract a Model to Vindex
+       2
+       3 Convert a HuggingFace or GGUF model into a queryable vindex.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - LARQL built (`cargo build --release`)
+      10 - Model weights (HuggingFace, GGUF, or pre-built vindex)
+     … +196 lines (ctrl+o to expand)
+
+● Write(docs\guides\query-knowledge.md)
+  ⎿  Wrote 359 lines to docs\guides\query-knowledge.md
+       2 # Query Knowledge
+       3 Use LQL to explore what a model knows. This guide covers DESCRIBE,
+      WALK, SELECT, INFER, and TRACE.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - LARQL REPL: `larql repl`
+     … +353 lines (ctrl+o to expand)
+
+● Write(docs\guides\edit-knowledge.md)
+  ⎿  Wrote 389 lines to docs\guides\edit-knowledge.md
+       2 # Edit Knowledge
+       3 Insert, delete, and modify facts in a model using LQL. Changes are
+      stored as patches — base vindex files are never modified.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - For INFER verification: vindex with inference weights
+     … +385 lines (ctrl+o to expand)
+
+● Write(docs\guides\serve-vindex.md)
+  ⎿  Wrote 327 lines to docs\guides\serve-vindex.md
+       1 # Serve a Vindex
+       2
+       3 Deploy a vindex over HTTP or gRPC. No GPU required.
+       4
+       5 ---
+       6
+       7 ## Prerequisites
+       8
+       9 - A vindex (see [Extract a Model](extract-a-model.md))
+      10 - For inference: vindex with inference weights
+     … +328 lines (ctrl+o to expand)
+
+● Write(docs\guides\python-bindings.md)
+  ⎿  Wrote 430 lines to docs\guides\python-bindings.md
+      1 # Python Bindings
+      2
+      3 Use LARQL from Python via PyO3 bindings.
+      4
+      5 ---
+      6
+      7 ## Installation
+      8
+      9 ### From PyPI (when available)
+     … +429 lines (ctrl+o to expand)
+
+● Write(docs\reference\cli.md)
+  ⎿  Wrote 331 lines to docs\reference\cli.md
+       1 # CLI Reference
+       2
+       3 Complete reference for LARQL command-line interface.
+       4
+       5 ---
+       6
+       7 ## Synopsis
+       8
+       9 ```bash
+      10 larql <COMMAND> [OPTIONS]
+     … +329 lines (ctrl+o to expand)
+
+● Write(docs\reference\api.md)
+  ⎿  Wrote 522 lines to docs\reference\api.md
+       1 # Server API Reference
+       2
+       3 Complete HTTP API reference for the LARQL server.
+       4
+       5 ---
+       6
+       7 ## Base URL
+       8
+       9 ```
+      10 http://localhost:8080/v1
+     … +522 lines (ctrl+o to expand)
+
+● Write(docs\reference\configuration.md)
+  ⎿  Wrote 317 lines to docs\reference\configuration.md
+      1 # Configuration Reference
+      2
+      3 Configuration options for vindexes, extraction, and runtime.
+      4
+      5 ---
+      6
+      7 ## Vindex Configuration (index.json)
+      8
+      9 The `index.json` file in a vindex contains configuration and
+     metadata.
+     … +312 lines (ctrl+o to expand)
+
+● Write(docs\architecture\system-design.md)
+  ⎿  Wrote 390 lines to docs\architecture\system-design.md
+      2 # System Design
+      3 High-level architecture of LARQL, data flows, and key design
+     decisions.
+      4
+      5 ---
+      7 ## Overview
+      8
+      9 LARQL is a system for querying and editing neural network
+     knowledge. It consists of 10 Rust crates organized in a layered
+     architecture.
+     … +414 lines (ctrl+o to expand)
+
+● Write(docs\troubleshooting\common-issues.md)
+  ⎿  Wrote 432 lines to docs\troubleshooting\common-issues.md
+      1 # Common Issues
+      2
+      3 Solutions to frequently encountered problems. Issues are ordered by
+      frequency.
+      4
+      5 ---
+      6
+      7 ## Extraction Issues
+      8
+      9 ### "Model not found in HuggingFace cache"
+     … +434 lines (ctrl+o to expand)
+
+  Searched for 1 pattern, read 1 file (ctrl+o to expand)
+
+● Background command "List all documentation files created" completed (exit code
+ 0)
+
+● Documentation complete. Here's the summary:
+
+  Documentation Created
+
+  ✓ Created 21 new files in docs/
+  ✓ Cross-links verified
+  ✓ No stubs detected
+
+  Entry point: docs/index.md
+  Onboarding: docs/getting-started/onboarding.md
+
+  New Documentation Structure
+
+  docs/
+  ├── index.md                           ← Navigation hub
+  ├── overview/
+  │   ├── what-is-this.md               ← Mental model, core concept
+  │   └── key-concepts.md               ← Glossary (50+ terms)
+  ├── getting-started/
+  │   ├── prerequisites.md              ← Requirements
+  │   ├── quickstart.md                 ← 15-minute guide
+  │   └── onboarding.md                 ← Zero-to-hero conceptual
+  ├── concepts/
+  │   ├── vindex.md                     ← Deep dive: vindex format
+  │   ├── lql.md                        ← Deep dive: query language
+  │   ├── patches.md                    ← Deep dive: knowledge editing
+  │   ├── inference.md                  ← Deep dive: inference engine
+  │   └── crate-architecture.md         ← How 10 crates fit together
+  ├── guides/
+  │   ├── extract-a-model.md            ← Task: HuggingFace → vindex
+  │   ├── query-knowledge.md            ← Task: DESCRIBE, WALK, SELECT
+  │   ├── edit-knowledge.md             ← Task: INSERT, patches
+  │   ├── serve-vindex.md               ← Task: HTTP/gRPC server
+  │   └── python-bindings.md            ← Task: use from Python
+  ├── reference/
+  │   ├── cli.md                        ← CLI reference
+  │   ├── api.md                        ← Server API reference
+  │   └── configuration.md              ← Vindex config, levels
+  ├── architecture/
+  │   └── system-design.md              ← System architecture, ADRs
+  └── troubleshooting/
+      └── common-issues.md              ← Top issues and fixes
+
+  Existing Docs Preserved
+
+  The 24 existing spec files (lql-spec.md, vindex-format-spec.md, etc.) are
+  preserved and linked from the new index.md.
+
+  Key Features
+
+  - index.md: Navigation hub with tables linking all sections
+  - what-is-this.md: Core mental model (model IS the database)
+  - key-concepts.md: 50+ term glossary covering all LARQL concepts
+  - onboarding.md: Zero-to-hero guide with analogies for SQL/vector DB users
+  - crate-architecture.md: Complete 10-crate dependency diagram
+  - system-design.md: Architecture decisions, data flows, scaling
+  - common-issues.md: 25+ troubleshooting entries by frequency
+
+✻ Brewed for 19m 0s
+
+> can this repo run on PC
+
+● Based on my audit of the codebase, yes, LARQL can run on Windows PC, but with
+  some limitations:
+
+  Windows Support Status
+
+  ┌─────────────────────────────────────────┬─────────────────┐
+  │                 Feature                 │     Status      │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Build                                   │ Yes             │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Browse queries (DESCRIBE, WALK, SELECT) │ Yes             │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Inference (CPU)                         │ Yes             │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Metal GPU                               │ No (macOS only) │
+  ├─────────────────────────────────────────┼─────────────────┤
+  │ Testing coverage                        │ Limited         │
+  └─────────────────────────────────────────┴─────────────────┘
+
+  To Run on Windows
+
+  # Clone and build
+  git clone https://github.com/chrishayuk/larql.git
+  cd larql
+  cargo build --release
+
+  # The binary will be at:
+  # target\release\larql.exe
+
+  What Works
+
+  - All browse operations: DESCRIBE, WALK, SELECT, STATS
+  - CPU inference: INFER works but without Metal GPU acceleration
+  - Vindex extraction: From HuggingFace or GGUF
+  - LQL REPL: Full query language support
+  - HTTP server: larql serve
+
+  What's Different
+
+  1. No Metal GPU — Windows uses CPU-only BLAS. Inference will be slower than on
+   Apple Silicon.
+  2. BLAS backend — You may need OpenBLAS installed:
+  # Using vcpkg
+  vcpkg install openblas
+  3. Limited testing — The project is primarily developed/tested on macOS. Some
+  edge cases may not be covered on Windows.
+
+  Quick Test
+
+  After building:
+
+  # Download a pre-built vindex
+  larql.exe hf download chrishayuk/gemma-3-4b-it-vindex
+
+  # Start REPL
+  larql.exe repl
+
+  # Query
+  USE "hf://chrishayuk/gemma-3-4b-it-vindex";
+  DESCRIBE "France";
+
+  If you encounter issues, the CPU backend should work for all core
+  functionality — just without GPU acceleration for inference.
+
+✻ Crunched for 52s
+
+> can you explain this project ? i am totally lost.                             
+● Let me explain LARQL in plain terms.                                          
+  The Simple Explanation
+                                                                                  LARQL lets you look inside an AI's brain and see what it "knows" — without
+  asking it questions.
+
+  ---
+  The Problem It Solves
+
+  Normally, to find out what an AI knows, you have to:
+  1. Ask it a question
+  2. Wait for it to think (run billions of calculations)
+  3. Hope it gives you the right answer
+
+  This is slow, expensive, and you can't be sure what it actually "knows" vs
+  what it's making up.
+
+  ---
+  What LARQL Does Instead
+
+  LARQL opens up the AI's brain (the model weights) and turns it into a
+  searchable database.
+
+  Think of it like this:
+
+  ┌──────────────────────────────────┬──────────────────────────────────────┐
+  │            Normal AI             │                LARQL                 │
+  ├──────────────────────────────────┼──────────────────────────────────────┤
+  │ "Hey AI, what's the capital of   │ Search database: "France" → finds    │
+  │ France?"                         │ "capital: Paris"                     │
+  ├──────────────────────────────────┼──────────────────────────────────────┤
+  │ AI thinks for 500ms, uses GPU    │ Instant lookup, no GPU needed        │
+  ├──────────────────────────────────┼──────────────────────────────────────┤
+  │ You get an answer (maybe right,  │ You see exactly what's stored        │
+  │ maybe wrong)                     │                                      │
+  └──────────────────────────────────┴──────────────────────────────────────┘
+
+  ---
+  A Real Example
+
+  -- Ask LARQL: "What does this AI know about France?"
+  DESCRIBE "France";
+
+  Output:
+  France
+    capital   → Paris     (stored in layer 27)
+    language  → French    (stored in layer 24)
+    continent → Europe    (stored in layer 25)
+
+  You're literally seeing the "facts" encoded in the neural network's weights.
+
+  ---
+  Why Is This Useful?
+
+  1. Debug AI Knowledge
+
+  See exactly what a model knows (or doesn't know) about a topic.
+
+  2. Edit AI Knowledge
+
+  -- Add a new fact to the AI's brain
+  INSERT INTO EDGES (entity, relation, target)
+      VALUES ("Atlantis", "capital", "Poseidon");
+
+  Now the AI "knows" that Atlantis's capital is Poseidon — without retraining.
+
+  3. Fast Queries
+
+  - Normal inference: 500ms, needs GPU
+  - LARQL lookup: 0.3ms, no GPU
+
+  4. Small Edits Instead of Retraining
+
+  - Want to add 1000 company facts? Fine-tuning costs $$$
+  - LARQL: Create a 10MB "patch" file, apply instantly
+
+  ---
+  The Key Insight
+
+  AI models store knowledge as patterns in their weights. LARQL discovered that:
+
+  1. Gate vectors = "What triggers this knowledge" (like a search index)
+  2. Down vectors = "What this knowledge outputs" (like database values)
+
+  By reorganizing these into a vindex (vector index), you can query them like a
+  database.
+
+  ---
+  Summary
+
+  ┌──────────┬───────────────────────────────────────────────┐
+  │ Concept  │                    Analogy                    │
+  ├──────────┼───────────────────────────────────────────────┤
+  │ AI Model │ A brain with knowledge                        │
+  ├──────────┼───────────────────────────────────────────────┤
+  │ Vindex   │ An X-ray of that brain, organized for search  │
+  ├──────────┼───────────────────────────────────────────────┤
+  │ LQL      │ SQL for querying the brain                    │
+  ├──────────┼───────────────────────────────────────────────┤
+  │ Patch    │ A small "memory implant" to add new knowledge │
+  └──────────┴───────────────────────────────────────────────┘
+
+  LARQL = "The model IS the database"
+
+  Does this help clarify things? I can go deeper on any part.
+
+✻ Worked for 49s
+
+> what is the magic that make LARQL work ?                                                                                                                      ● Great question. The "magic" is actually a deep insight about how transformers   store knowledge.
+
+  ---                                                                             The Core Discovery
+
+  Inside every transformer (GPT, Llama, Gemma, etc.), there are FFN layers
+  (Feed-Forward Networks). Each layer does this calculation:
+
+  output = down_projection(activation(gate(x) × up(x)))
+
+  The breakthrough: Each row of the gate matrix paired with a column of the down
+   matrix acts like a database row.
+
+  ---
+  Visualizing It
+
+  Imagine the FFN layer has 10,000 "features". Each feature is:
+
+  Feature #9515 (Layer 27):
+  ┌─────────────────────────────────────────────────────┐
+  │  GATE VECTOR (2560 numbers)                         │
+  │  "Fires when input looks like: capital of France"   │
+  ├─────────────────────────────────────────────────────┤
+  │  DOWN VECTOR (2560 numbers)                         │
+  │  "Outputs: push toward token 'Paris'"               │
+  └─────────────────────────────────────────────────────┘
+
+  The gate is the KEY. The down is the VALUE.
+
+  It's literally a key-value store hiding inside matrix multiplication!
+
+  ---
+  The Magic Step-by-Step
+
+  Step 1: The Model Learns Facts as Gate-Down Pairs
+
+  During training, when the model sees "The capital of France is Paris"
+  thousands of times, it learns:
+
+  - Gate #9515: "Activate when I see 'capital of France' context"
+  - Down #9515: "Add a vector that pushes logits toward 'Paris'"
+
+  Step 2: LARQL Extracts These Pairs
+
+  Instead of running the model, LARQL:
+  1. Takes the gate matrix (what triggers each feature)
+  2. Takes the down matrix (what each feature outputs)
+  3. Reorganizes them into a searchable index
+
+  Original Model:              LARQL Vindex:
+  ┌─────────────────┐         ┌─────────────────┐
+  │ gate_proj.weight│   →     │ KNN search index│
+  │ (matrix multiply)│        │ (instant lookup)│
+  └─────────────────┘         └─────────────────┘
+
+  Step 3: Query = KNN Search
+
+  When you ask DESCRIBE "France":
+
+  1. Embed "France" → get a vector
+  2. Find gate vectors most similar to that vector (KNN search)
+  3. For each matching gate, look up what it outputs
+  4. Return: "capital → Paris", "language → French", etc.
+
+  No matrix multiplication. No forward pass. Just similarity search.
+
+  ---
+  Why This Works (The Math)
+
+  In a normal forward pass:
+
+  # Standard FFN computation
+  gate_scores = input @ gate_matrix      # Matrix multiply (slow)
+  activated = gelu(gate_scores * up_out)
+  output = activated @ down_matrix       # Matrix multiply (slow)
+
+  LARQL realizes:
+  - input @ gate_matrix is just computing dot products between input and each
+  gate row
+  - High dot product = that feature is relevant
+  - So skip the multiply — just find the top-K most similar gates
+
+  # LARQL approach
+  top_features = knn_search(input, gate_vectors, k=8000)  # Fast lookup
+  output = sum(down_vectors[f] * score for f, score in top_features)
+
+  Same result, different path. KNN replaces matmul.
+
+  ---
+  The Surprising Part
+
+  This isn't an approximation. For factual queries, it gives identical results:
+
+  INFER "The capital of France is" MODE walk   → Paris (97.91%)
+  INFER "The capital of France is" MODE dense  → Paris (97.93%)
+
+  Walk mode (LARQL's KNN approach) matches dense mode (standard matmul) because:
+  - Only ~8,000 of 10,240 features actually fire significantly
+  - The rest contribute near-zero
+  - So finding the top-K is equivalent to computing all of them
+
+  ---
+  The Insight in One Sentence
+
+  ▎ Transformers store knowledge as searchable key-value pairs hidden inside
+  ▎ their weight matrices. LARQL just makes them searchable.
+
+  ---
+  Why Nobody Did This Before
+
+  1. Scale: You need efficient KNN over millions of high-dimensional vectors
+  2. Reorganization: The weights must be restructured (that's what a "vindex"
+  is)
+  3. Validation: Proving walk = dense required careful engineering
+
+  LARQL cracked all three.
+
+  ---
+  Analogy
+
+  ┌───────────────────────────────────────────────┬─────────────────────────┐
+  │              Normal AI Inference              │          LARQL          │
+  ├───────────────────────────────────────────────┼─────────────────────────┤
+  │ Reading an entire encyclopedia to answer one  │ Using the index at the  │
+  │ question                                      │ back                    │
+  ├───────────────────────────────────────────────┼─────────────────────────┤
+  │ O(all parameters)                             │ O(relevant features)    │
+  ├───────────────────────────────────────────────┼─────────────────────────┤
+  │ GPU required                                  │ CPU works fine          │
+  └───────────────────────────────────────────────┴─────────────────────────┘
+
+  The "magic" is realizing the index was there all along — just encoded as
+  matrix rows.
+
+✻ Cooked for 31s
+
+────────────────────────────────────────────────────────────────────────────────>                                                                               ────────────────────────────────────────────────────────────────────────────────  | Opus 4.5 | larql-main | ctx 76% | 5h 9% | 7d 42% |
+  ⏵⏵ bypass permissions on (shift+tab to cycle)
+
+
+  ---
+  Analogy
+
+  ┌───────────────────────────────────────────────┬─────────────────────────┐
+  │              Normal AI Inference              │          LARQL          │
+  ├───────────────────────────────────────────────┼─────────────────────────┤
+  │ Reading an entire encyclopedia to answer one  │ Using the index at the  │
+  │ question                                      │ back                    │
+  ├───────────────────────────────────────────────┼─────────────────────────┤
+  │ O(all parameters)                             │ O(relevant features)    │
+  ├───────────────────────────────────────────────┼─────────────────────────┤
+  │ GPU required                                  │ CPU works fine          │
+  └───────────────────────────────────────────────┴─────────────────────────┘
+
+  The "magic" is realizing the index was there all along — just encoded as
+  matrix rows.
+
+✻ Cooked for 31s
+
+────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────
+  | Opus 4.5 | larql-main | ctx 76% | 5h 9% | 7d 42% |
+  ⏵⏵ bypass permissions on (shift+tab to cycle)
+
+3
